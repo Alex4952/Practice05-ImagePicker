@@ -35,17 +35,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		else {
 
 			let alert = UIAlertController(title: "", message: "카메라가 없습니다.", preferredStyle: .Alert)
-			alert.addAction((UIAlertAction(title: "확인", style: .Cancel, handler: {(_)
+			let okAction = UIAlertAction(title: "확인", style: .Cancel, handler: openPicker)
+			alert.addAction(okAction)
 			
-			})))
 			self.presentViewController(alert, animated: false, completion: nil)
 			
-			picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//			picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 		}
 		
+//		picker.allowsEditing = false
+//		picker.delegate = self
+//		
+//		self.presentViewController(picker, animated: true, completion: nil)
+	}
+	
+	func openPicker(ation: UIAlertAction) {
+		let picker = UIImagePickerController()
+		picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 		picker.allowsEditing = false
 		picker.delegate = self
-		
 		self.presentViewController(picker, animated: true, completion: nil)
 	}
 	
